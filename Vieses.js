@@ -22,6 +22,10 @@ let state = 0;
   // É um jogo.
 let img = [];
 
+var mobx;
+
+var moby;
+
   //e varia às mãos de quem o joga.
 function preload() {
   for (let i = 0; i < maxImages; i ++ ) {
@@ -29,18 +33,13 @@ function preload() {
 
     // accelerometer Data
 window.addEventListener('devicemotion', function(e) 
-{
-  // get accelerometer values
-  mobx = parseInt(e.accelerationIncludingGravity.x);
-  moby = parseInt(e.accelerationIncludingGravity.y);
-  mobz = parseInt(e.accelerationIncludingGravity.z); 
-});
+
   }
 }
 
   //feito num rectângulo de 9 por 6, onde as peças não encaixam.
 function setup() {
-  createCanvas(300,450);
+  createCanvas(windowWidth, windowHeight);
   for (let i = 0; i < maxImages; i ++ ) {
     img[i].loadPixels();
     noCursor();
@@ -49,7 +48,8 @@ function setup() {
   //na caixa do tempo e do espaço.
   imageIndex = int(random(maxImages));
   frameRate(24);
-
+ mobx = 0;
+  moby = 0;
 }
 
 function draw() {
@@ -209,7 +209,7 @@ function draw() {
 }
 
   //Escreveste um episódio de uma história viesa.
-function mouseReleased() {
+function touchEnded() {
 
   //A forma sempre é a mesma, mas a sua aparência revela-se única.
   imageIndex = int(random(maxImages));
@@ -262,5 +262,10 @@ function convolution(x, y, matrix, matrixsize, img) {
   
 
 }
-
+{
+  // get accelerometer values
+  mobx = parseInt(e.accelerationIncludingGravity.x);
+  moby = parseInt(e.accelerationIncludingGravity.y);
+  mobz = parseInt(e.accelerationIncludingGravity.z); 
+});
 
