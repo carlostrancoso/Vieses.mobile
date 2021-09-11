@@ -245,13 +245,19 @@ function convolution(x, y, matrix, matrixsize, img) {
 
  // Joga outra vez.
   return color(rtotal, gtotal, btotal);
+  
+  fill(0);
+  noStroke();
+  text("mobx: " + x, 25, 25);
+  text("moby: " + y, 25, 50);
+  text("mobz: " + z, 25, 75);
 }
 
 // accelerometer Data
 window.addEventListener('devicemotion', function(e) 
 {
   // get accelerometer values
-  x = parseInt(e.accelerationIncludingGravity.x);
-  y = parseInt(e.accelerationIncludingGravity.y);
-  z = parseInt(e.accelerationIncludingGravity.z); 
+  mobx = parseInt(e.accelerationIncludingGravity.x);
+  moby = parseInt(e.accelerationIncludingGravity.y);
+  mobz = parseInt(e.accelerationIncludingGravity.z); 
 });
