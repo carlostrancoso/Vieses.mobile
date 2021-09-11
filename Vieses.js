@@ -39,7 +39,7 @@ window.addEventListener('devicemotion', function(e)
 
   //feito num rectângulo de 9 por 6, onde as peças não encaixam.
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(300, 450);
   for (let i = 0; i < maxImages; i ++ ) {
     img[i].loadPixels();
     noCursor();
