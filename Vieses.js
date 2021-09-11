@@ -27,6 +27,14 @@ function preload() {
   for (let i = 0; i < maxImages; i ++ ) {
     img[i] = loadImage('data/bienal' + i + '.jpg' );
 
+    // accelerometer Data
+window.addEventListener('devicemotion', function(e) 
+{
+  // get accelerometer values
+  mobx = parseInt(e.accelerationIncludingGravity.x);
+  moby = parseInt(e.accelerationIncludingGravity.y);
+  mobz = parseInt(e.accelerationIncludingGravity.z); 
+});
   }
 }
 
@@ -45,6 +53,13 @@ function setup() {
 }
 
 function draw() {
+  
+    fill(0);
+  noStroke();
+  text("mobx: " + x, 25, 25);
+  text("moby: " + y, 25, 50);
+  text("mobz: " + z, 25, 75);
+  
   image(img[imageIndex], 0, 0);
   
   //Nunca um rio se banha em ti duas vezes
@@ -245,18 +260,7 @@ function convolution(x, y, matrix, matrixsize, img) {
  // Joga outra vez.
   return color(rtotal, gtotal, btotal);
   
-  fill(0);
-  noStroke();
-  text("mobx: " + x, 25, 25);
-  text("moby: " + y, 25, 50);
-  text("mobz: " + z, 25, 75);
+
 }
 
-// accelerometer Data
-window.addEventListener('devicemotion', function(e) 
-{
-  // get accelerometer values
-  mobx = parseInt(e.accelerationIncludingGravity.x);
-  moby = parseInt(e.accelerationIncludingGravity.y);
-  mobz = parseInt(e.accelerationIncludingGravity.z); 
-});
+
