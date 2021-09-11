@@ -54,11 +54,7 @@ function setup() {
 
 function draw() {
   
-    fill(0);
-  noStroke();
-  text("mobx: " + x, 25, 25);
-  text("moby: " + y, 25, 50);
-  text("mobz: " + z, 25, 75);
+
   
   image(img[imageIndex], 0, 0);
   
@@ -206,6 +202,10 @@ function draw() {
    //Lavemos as nossas caras.
     updatePixels();
   }
+      fill(0);
+  noStroke();
+  text("mobx: " + mobx, 25, 25);
+  text("moby: " + moby, 25, 50);
 }
 
   //Escreveste um episódio de uma história viesa.
