@@ -22,6 +22,9 @@ let state = 0;
   // É um jogo.
 let img = [];
 
+var mx, my, mz;
+
+
 
   //e varia às mãos de quem o joga.
 function preload() {
@@ -43,8 +46,9 @@ function setup() {
   //na caixa do tempo e do espaço.
   imageIndex = int(random(maxImages));
   frameRate(24);
- mobx = 0;
-  moby = 0;
+ mx = 0;
+  my = 0;
+  mz = 0;
 }
 
 function draw() {
@@ -199,8 +203,10 @@ function draw() {
   }
       fill(0);
   noStroke();
-  text("mobx: " + mobx, 25, 25);
-  text("moby: " + moby, 25, 50);
+  text("mx: " + mx, 25, 25);
+  text("my: " + my, 25, 50);
+    text("mz: " + mz, 25, 75);
+  
 }
 
   //Escreveste um episódio de uma história viesa.
@@ -257,5 +263,13 @@ function convolution(x, y, matrix, matrixsize, img) {
   
 
 }
+// accelerometer Data
+window.addEventListener('devicemotion', function(e) 
+{
+  // get accelerometer values
+  mx = parseInt(e.accelerationIncludingGravity.x);
+  my = parseInt(e.accelerationIncludingGravity.y);
+  mz = parseInt(e.accelerationIncludingGravity.z); 
+});
 
 
