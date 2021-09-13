@@ -268,8 +268,8 @@ function convolution(x, y, matrix, matrixsize, img) {
 window.addEventListener('devicemotion', function(e) 
 {
   // get accelerometer values
-  mx = map(parseInt(e.accelerationIncludingGravity.x),-9,9,0,width);
-  my = map(parseInt(e.accelerationIncludingGravity.y),-9,9,0,height);
+  mx = map(parseInt(e.accelerationIncludingGravity.x),-9,9,0,width)*-1;
+  my = map(parseInt(e.accelerationIncludingGravity.y),-9,9,0,height)*-1;
   mz = parseInt(e.accelerationIncludingGravity.z); 
 });
 
