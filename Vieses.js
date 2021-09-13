@@ -22,7 +22,7 @@ let state = 0;
   // É um jogo.
 let img = [];
 
-var mx, my, mz;
+let mx, my, mz;
 
 
 
@@ -79,7 +79,7 @@ function draw() {
     for (let x = 0; x <= width; x += 10) {
 
  // de ruído vertical.
-      let y = map(noise(xoff, yoff), 0, 5, 200, mouseY);
+      let y = map(noise(xoff, yoff), 0, 5, 200, my);
       vertex(x, y);
 
  // Suas ondas de branda superfície
@@ -97,10 +97,10 @@ function draw() {
   if (state == 1) {
 
   //Buscando não olhando o resto. 
-    const xstart = constrain(mouseX - w/2, 0, img[imageIndex].width);
-    const ystart = constrain(mouseY - w/2, 0, img[imageIndex].height);
-    const xend = constrain(mouseX + w/2, 0, img[imageIndex].width);
-    const yend = constrain(mouseY + w/2, 0, img[imageIndex].height);
+    const xstart = constrain(mx - w/2, 0, img[imageIndex].width);
+    const ystart = constrain(my - w/2, 0, img[imageIndex].height);
+    const xend = constrain(mx + w/2, 0, img[imageIndex].width);
+    const yend = constrain(my + w/2, 0, img[imageIndex].height);
     const matrixsize = 3;
 
   //Imagens voltam a ser elas próprias.
@@ -133,13 +133,13 @@ function draw() {
   if (state == 2) {
 
   //O seu fogo tem quantos vermelhos?
-    let r = map(mouseX, 0, width, 0, 255);
+    let r = map(mx, 0, width, 0, 255);
  
  //A sua folha quantas imagens caduca?
-    let g = map(mouseY, 0, height, 0, 255);
+    let g = map(my, 0, height, 0, 255);
 
   //Porque janela as observas?
-    let d = dist(mouseX, mouseY, width/2, height/2);
+    let d = dist(mx, my, width/2, height/2);
 
   //Nós não sabemos com que tinta elas te vêm
     let b = map(d, 0, width/2, 0, 255);
@@ -170,7 +170,7 @@ function draw() {
         let maxdist = 50;
         
   //que deixa um rasto okupado
-        let d = dist(x, y, mouseX, mouseY);
+        let d = dist(x, y, mx, my);
         
   //gerado e mágico
         let adjustbrightness = 255*(maxdist-d)/maxdist;
@@ -268,8 +268,8 @@ function convolution(x, y, matrix, matrixsize, img) {
 window.addEventListener('devicemotion', function(e) 
 {
   // get accelerometer values
-  mx = map(parseInt(e.accelerationIncludingGravity.x),-9,9,0,300);
-  my = map(parseInt(e.accelerationIncludingGravity.y),-9,9,0,450);
+  mx = map(parseInt(e.accelerationIncludingGravity.x),-9,9,0,width);
+  my = map(parseInt(e.accelerationIncludingGravity.y),-9,9,0,height);
   mz = parseInt(e.accelerationIncludingGravity.z); 
 });
 
