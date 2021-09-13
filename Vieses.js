@@ -206,7 +206,8 @@ function draw() {
   text("mx: " + mx, 25, 25);
   text("my: " + my, 25, 50);
     text("mz: " + mz, 25, 75);
-  
+  text("mouseX: " + mouseX, 25, 100);
+  text("mouseY: " + mouseY, 25, 125);
 }
 
   //Escreveste um episódio de uma história viesa.
