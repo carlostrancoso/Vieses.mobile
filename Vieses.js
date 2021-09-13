@@ -22,7 +22,9 @@ let state = 0;
   // É um jogo.
 let img = [];
 
-let mx, my, mz;
+let mx = 0;
+
+let my = 0;
 
 
 
@@ -46,9 +48,8 @@ function setup() {
   //na caixa do tempo e do espaço.
   imageIndex = int(random(maxImages));
   frameRate(24);
- mx = 0;
-  my = 0;
-  mz = 0;
+ mx += acelx;
+  my += acelx;
 }
 
 function draw() {
@@ -268,9 +269,8 @@ function convolution(x, y, matrix, matrixsize, img) {
 window.addEventListener('devicemotion', function(e) 
 {
   // get accelerometer values
-  mx = map(parseInt(e.accelerationIncludingGravity.x),-9,9,0,width)*-1;
-  my = map(parseInt(e.accelerationIncludingGravity.y),-9,9,0,height)*-1;
-  mz = parseInt(e.accelerationIncludingGravity.z); 
+  acelx = map(parseInt(e.accelerationIncludingGravity.x),-9,9,0,width);
+  acely = map(parseInt(e.accelerationIncludingGravity.y),-9,9,0,height); 
 });
 
 
