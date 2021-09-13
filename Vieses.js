@@ -22,17 +22,12 @@ let state = 0;
   // É um jogo.
 let img = [];
 
-var mobx;
-
-var moby;
 
   //e varia às mãos de quem o joga.
 function preload() {
   for (let i = 0; i < maxImages; i ++ ) {
     img[i] = loadImage('data/bienal' + i + '.jpg' );
 
-    // accelerometer Data
-window.addEventListener('devicemotion', function(e) 
 
   }
 }
@@ -262,10 +257,5 @@ function convolution(x, y, matrix, matrixsize, img) {
   
 
 }
-{
-  // get accelerometer values
-  mobx = parseInt(e.accelerationIncludingGravity.x);
-  moby = parseInt(e.accelerationIncludingGravity.y);
-  mobz = parseInt(e.accelerationIncludingGravity.z); 
-});
+
 
