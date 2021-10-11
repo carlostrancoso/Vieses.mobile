@@ -25,7 +25,7 @@ let img = [];
 
 function preload() {
   for (let i = 0; i < maxImages; i ++ ) {
-    img[i] = loadImage('bienal' + i + '.jpg' );
+    img[i] = loadImage('data/bienal' + i + '.jpg' );
     //e varia às mãos de quem o joga.
   }
 }
