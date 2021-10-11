@@ -5,6 +5,7 @@ let maxImages = 16;
 let imageIndex = 1;
 
   //nas suas diversas matrizes.
+
 const matrix = [ [ -1, -1, -1 ],
                  [ -1, 9, -1 ],
                  [ -1, -1, -1 ] ];
@@ -22,48 +23,43 @@ let state = 0;
   // É um jogo.
 let img = [];
 
-var mx, my, mz;
-
-
-
-  //e varia às mãos de quem o joga.
 function preload() {
   for (let i = 0; i < maxImages; i ++ ) {
-    img[i] = loadImage('data/bienal' + i + '.jpg' );
-
-
+    img[i] = loadImage('bienal' + i + '.jpg' );
+    //e varia às mãos de quem o joga.
   }
 }
 
-  //feito num rectângulo de 9 por 6, onde as peças não encaixam.
+  //feito num rectangulo de 9 por 6, onde as peças não encaixam.
 function setup() {
   createCanvas(300, 450);
   for (let i = 0; i < maxImages; i ++ ) {
     img[i].loadPixels();
-    noCursor();
+    
+  //e varia às mãos de quem o joga.
+      noCursor();
   }
   
   //na caixa do tempo e do espaço.
+
   imageIndex = int(random(maxImages));
+
+  pixelDensity(1);
   frameRate(24);
- mx = 0;
-  my = 0;
-  mz = 0;
+
 }
 
 function draw() {
-  
 
-  
   image(img[imageIndex], 0, 0);
   
   //Nunca um rio se banha em ti duas vezes
   if (state == 0) {
 
-  //não se distingue do seu interior
+  //não se destingue do seu interior
     noStroke();
+
     yi++;
-    
     if (yi > height) {
       yi = 0;
     }
@@ -76,10 +72,12 @@ function draw() {
     
  // ressoando a tua forma
     let xoff = 0; 
+
     for (let x = 0; x <= width; x += 10) {
 
  // de ruído vertical.
       let y = map(noise(xoff, yoff), 0, 5, 200, mouseY);
+
       vertex(x, y);
 
  // Suas ondas de branda superfície
@@ -89,12 +87,14 @@ function draw() {
  // e corrente variável,
     yoff += 0.01;
     vertex(width, height);
-    vertex(0, height);    
+    vertex(0, height);
+    
+ // e corrente variável,
     endShape(CLOSE);
   }
 
   //Agora terminado o rio encontramos o primeiro vestígio do povo Vieso.
-  if (state == 1) {
+  if (state == 2) {
 
   //Buscando não olhando o resto. 
     const xstart = constrain(mouseX - w/2, 0, img[imageIndex].width);
@@ -130,7 +130,7 @@ function draw() {
   }
   
   // O vestígio vísivel passou a encontrado.  
-  if (state == 2) {
+  if (state == 1) {
 
   //O seu fogo tem quantos vermelhos?
     let r = map(mouseX, 0, width, 0, 255);
@@ -150,10 +150,11 @@ function draw() {
     tint(255);
   }
   
-  //Parabéns. Contribuíste para o devir e mais uma página foi virada na História. Ela actualiza-se.
+  //Parabéns. Contribuiste para o devir e mais uma página foi virada na História. Ela atualiza-se.
    if(state == 3){
     
-  //As dimensões e matriz do jogo sempre seguem    
+    //As dimensões e matriz do jogo sempre seguem
+    
     for (let x = 0; x < img[imageIndex].width; x++) {
         for (let y = 0; y < img[imageIndex].height; y++ ) {
 
@@ -201,13 +202,6 @@ function draw() {
    //Lavemos as nossas caras.
     updatePixels();
   }
-      fill(0);
-  noStroke();
-  text("mx: " + mx, 25, 25);
-  text("my: " + my, 25, 50);
-    text("mz: " + mz, 25, 75);
-  text("mouseX: " + mouseX, 25, 100);
-  text("mouseY: " + mouseY, 25, 125);
 }
 
   //Escreveste um episódio de uma história viesa.
@@ -218,12 +212,12 @@ function touchEnded() {
   state++;
 
   //Ela repeta-se e nós também. Também.
-  if (state >= 4) {
+  if (state >= 2) {
     state = 0;
   }
 
   //Deixaste o teu rasto. Guarda-o.
-  //saveCanvas('Vieses.png');
+  // saveCanvas('Vieses','png');
 }
 
   //Fora deste rectângulo há outras histórias.
@@ -249,7 +243,6 @@ function convolution(x, y, matrix, matrixsize, img) {
       rtotal += (img[imageIndex].pixels[loc]) * matrix[i][j];
       gtotal += (img[imageIndex].pixels[loc]) * matrix[i][j];
       btotal += (img[imageIndex].pixels[loc]) * matrix[i][j];
-      
  //a sua dobra traça ligações
     }
   }
@@ -261,14 +254,4 @@ function convolution(x, y, matrix, matrixsize, img) {
 
  // Joga outra vez.
   return color(rtotal, gtotal, btotal);
-  
-
 }
-// accelerometer Data
-window.addEventListener('devicemotion', function(e) 
-{
-  // get accelerometer values
-  mx = map(parseInt(e.accelerationIncludingGravity.x),-9,9,0,300);
-  my = map(parseInt(e.accelerationIncludingGravity.y),-9,9,0,450);
-  mz = parseInt(e.accelerationIncludingGravity.z); 
-});
