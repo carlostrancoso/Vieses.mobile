@@ -255,12 +255,13 @@ function convolution(x, y, matrix, matrixsize, img) {
  // Joga outra vez.
   return color(rtotal, gtotal, btotal);
 }
-function noScroll() {
-  window.scrollTo(0, 0);
+function preventDefault(e){
+    e.preventDefault();
 }
 
-// add listener to disable scroll
-window.addEventListener('scroll', noScroll);
-
-// Remove listener to re-enable scroll
-window.removeEventListener('scroll', noScroll);
+function disableScroll(){
+    document.body.addEventListener('touchmove', preventDefault, { passive: false });
+}
+function enableScroll(){
+    document.body.removeEventListener('touchmove', preventDefault);
+}
