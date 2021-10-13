@@ -112,7 +112,7 @@ tint(255,200);
   }
 }
 
-function mousePressed() {
+function mouseClicked() {
 
   
   imageIndex = int(random(maxImages));
