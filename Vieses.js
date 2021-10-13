@@ -112,7 +112,7 @@ tint(255,200);
   }
 }
 
-function touchEnded() {
+function mousePressed() {
 
   
   imageIndex = int(random(maxImages));
