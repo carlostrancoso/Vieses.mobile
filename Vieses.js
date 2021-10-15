@@ -4,8 +4,6 @@ let imageIndex = 1;
 
 let yoff = 0.0;
 
-let yi = 0;
-
 let state = 0;
 
 let img = [];
@@ -54,11 +52,6 @@ colorMode(RGB);
 
     noStroke();
      noTint();
-
-    yi++;
-    if (yi > height) {
-      yi = 0;
-    }  
 
     fill(0, 102, 153, 80);
 
@@ -112,7 +105,7 @@ tint(255,200);
   }
 }
 
-function mouseClicked() {
+function touchEnded() {
 
   
   imageIndex = int(random(maxImages));
